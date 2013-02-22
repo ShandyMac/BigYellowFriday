@@ -19,9 +19,9 @@ namespace BigYellowFriday.Controllers
             return View();
         }
 
-        public JsonResult Decide(int lower, int upper) {
+        public JsonResult Decide(int upper) {
             var random = new Random();
-            return new JsonResult() { Data = random.Next(lower, upper) };
+            return new JsonResult() { Data = random.Next(0, upper) };
         }
     }
 }
