@@ -1,8 +1,6 @@
 ﻿$(function () {
     var count = 0;
     var timer = $.timer(function () {
-        //put animation functionality in here?
-        
         var tableIndex = 0;
         var allTds = $('#table').children('tbody').children('tr').children('td');
         tableIndex = DecideWhichIndex(allTds.length);
@@ -14,16 +12,13 @@
         $(allTds[tableIndex]).animate({
             backgroundColor: "White"
         }, { duration: "slow" });
-        /*
-        $('.highlight').removeClass('highlight');
-        $(allTds[tableIndex]).addClass('highlight');
-        */
+
         $('#stopwatch').html(count);
         count++;
     });
 
     timer.set({
-        time: 1000,
+        time: 100,
         autostart: true
     });
 
@@ -32,14 +27,10 @@
         var tableIndex = 0;
         var allTds = $('#table').children('tbody').children('tr').children('td');
         tableIndex = DecideWhichIndex(allTds.length);
-        $('.highlight').removeClass('highlight');
-        $(allTds[tableIndex]).addClass('highlight');
+        $(allTds[tableIndex]).animate({
+            backgroundColor: "Yellow"
+        }, { duration: "fast" });
     });
-
-    //testing animation
-    $('#animate').animate({
-        backgroundColor: "white"    
-    },{duration: "slow"});
 
     function DecideWhichIndex(tds) {
         var index = 0;
