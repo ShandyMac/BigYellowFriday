@@ -1,0 +1,9 @@
+C:\Users\Shandy\documents\visual studio 2010\Projects\BigYellowFriday\BigYellowFriday\bin\BigYellowFriday.dll
+C:\Users\Shandy\documents\visual studio 2010\Projects\BigYellowFriday\BigYellowFriday\bin\BigYellowFriday.pdb
+C:\Users\Shandy\documents\visual studio 2010\Projects\BigYellowFriday\BigYellowFriday\bin\EntityFramework.dll
+C:\Users\Shandy\documents\visual studio 2010\Projects\BigYellowFriday\BigYellowFriday\bin\EntityFramework.xml
+C:\Users\Shandy\documents\visual studio 2010\Projects\BigYellowFriday\BigYellowFriday\obj\Debug\BigYellowFriday.csprojResolveAssemblyReference.cache
+C:\Users\Shandy\documents\visual studio 2010\Projects\BigYellowFriday\BigYellowFriday\obj\Debug\BigYellowFriday.dll
+C:\Users\Shandy\documents\visual studio 2010\Projects\BigYellowFriday\BigYellowFriday\obj\Debug\BigYellowFriday.pdb
+C:\Users\Shandy\documents\visual studio 2010\Projects\BigYellowFriday\BigYellowFriday\bin\JetBrains.Annotations.dll
+C:\Users\Shandy\documents\visual studio 2010\Projects\BigYellowFriday\BigYellowFriday\bin\JetBrains.Annotations.xml
