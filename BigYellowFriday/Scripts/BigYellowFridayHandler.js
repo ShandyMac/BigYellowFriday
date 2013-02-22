@@ -1,12 +1,23 @@
 ﻿$(function () {
     var count = 0;
     var timer = $.timer(function () {
-        //put animation functionality in here
+        //put animation functionality in here?
+        
         var tableIndex = 0;
         var allTds = $('#table').children('tbody').children('tr').children('td');
         tableIndex = DecideWhichIndex(allTds.length);
+
+        $(allTds[tableIndex]).animate({
+            backgroundColor: "Yellow"
+        }, { duration: "slow" });
+
+        $(allTds[tableIndex]).animate({
+            backgroundColor: "White"
+        }, { duration: "slow" });
+        /*
         $('.highlight').removeClass('highlight');
         $(allTds[tableIndex]).addClass('highlight');
+        */
         $('#stopwatch').html(count);
         count++;
     });
@@ -24,6 +35,11 @@
         $('.highlight').removeClass('highlight');
         $(allTds[tableIndex]).addClass('highlight');
     });
+
+    //testing animation
+    $('#animate').animate({
+        backgroundColor: "white"    
+    },{duration: "slow"});
 
     function DecideWhichIndex(tds) {
         var index = 0;
