@@ -10,7 +10,7 @@ namespace BigYellowFriday.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Big Yellow Friday";
+            ViewBag.Message = "Big Yellow Friday Football Table";
             return View();
         }
 

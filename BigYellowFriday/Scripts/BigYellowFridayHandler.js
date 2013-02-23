@@ -7,17 +7,30 @@
                 table: '#table'
             },
             init: function () {
-                base.timer.init();
                 $(base.handler.settings.submitBtn).click(base.handler.events.onClick);
+                base.timer.init();
             },
             events: {
                 onClick: function () {
-                    //base.timer.events.stop();
+                    base.timer.events.stop();
                     var allTds = base.handler.events.getTableChildren();
                     var index = base.handler.events.decideWhichIndex(allTds.length);
-                    $(allTds[index]).addClass('highlight');
-                },
-                setupTimer: function () {
+                    //$(allTds[index]).removeClass('highlight');
+
+                    /*
+                    var allTds = base.handler.events.getTableChildren();
+                    var index = base.handler.events.decideWhichIndex(allTds.length);
+                    */
+
+                    $(allTds[index]).animate({
+                        backgroundColor: '#FF6200',
+                        color: '#f9f9f9'
+                    }, {
+                        duration: 5000,
+                        complete: function () {
+                            $(this).effect("highlight", { color: 'yellow' }, 5000);
+                        }
+                    });
 
                 },
                 getTableChildren: function () {
@@ -47,33 +60,37 @@
 
         base.timer = {
             settings: {
-
+                timer: $.timer
             },
             init: function () {
                 var count = 0;
-                var timer = $.timer(function () {
+                base.timer.settings.timer = $.timer(function () {
                     base.timer.events.animate();
-                    $('#stopwatch').html(count);
                     count++;
                 });
 
-                timer.set({
-                    time: 100,
+                base.timer.settings.timer.set({
+                    time: 25,
                     autostart: true
                 });
             },
             events: {
-                start: function () { },
-                stop: function () { },
+                start: function () {
+                    base.timer.settings.timer.play();
+                },
+                stop: function () {
+                    base.timer.settings.timer.stop();
+                },
                 animate: function () {
                     var allTds = base.handler.events.getTableChildren();
                     var tableIndex = base.handler.events.decideWhichIndex(allTds.length);
                     $(allTds[tableIndex]).animate({
-                        backgroundColor: "Yellow"
+                        backgroundColor: "yellow"
                     }, { duration: "slow" });
 
                     $(allTds[tableIndex]).animate({
-                        backgroundColor: "White"
+                        backgroundColor: "#f9f9f9" //very light grey
+                        //backgroundColor: "White"
                     }, { duration: "slow" });
                 }
             }
