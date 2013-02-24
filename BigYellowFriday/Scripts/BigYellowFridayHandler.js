@@ -4,7 +4,9 @@
         base.handler = {
             settings: {
                 submitBtn: '#run',
-                table: '#table'
+                table: '#table',
+                winnerDialog: '#winner-dialog',
+                winnerLabel: '#winner'
             },
             init: function () {
                 base.handler.events.getTeams();
@@ -16,13 +18,6 @@
                     base.timer.events.stop();
                     var allTds = base.handler.events.getTableChildren();
                     var index = base.handler.events.decideWhichIndex(allTds.length);
-                    //$(allTds[index]).removeClass('highlight');
-
-                    /*
-                    var allTds = base.handler.events.getTableChildren();
-                    var index = base.handler.events.decideWhichIndex(allTds.length);
-                    */
-
                     $(allTds[index]).animate({
                         backgroundColor: '#FF6200',
                         color: '#f9f9f9'
@@ -31,8 +26,10 @@
                         complete: function () {
                             $(this).effect("highlight", { color: 'yellow' }, 5000);
                         }
+                    }).promise().done(function () {
+                        $(base.handler.settings.winnerLabel).html($(allTds[index]).text());
+                        $(base.handler.settings.winnerDialog).modal();
                     });
-
                 },
                 getTableChildren: function () {
                     return $(base.handler.settings.table).children('tbody').children('tr').children('td');
@@ -65,14 +62,14 @@
                         success: function (data) {
                             if (data != null)
                                 var teamCounter = 0;
-                                while (teamCounter < 100) {
-                                    if (teamCounter % 10 == 0)
-                                        $(base.handler.settings.table).append("<tr></tr>");
+                            while (teamCounter < 100) {
+                                if (teamCounter % 10 == 0)
+                                    $(base.handler.settings.table).append("<tr></tr>");
 
-                                    $(base.handler.settings.table).find('tr').last().append("<td>" + data.Teams[teamCounter] + "</td>");
-                                    teamCounter++;
-                                }
-                        }   ,
+                                $(base.handler.settings.table).find('tr').last().append("<td>" + data.Teams[teamCounter] + "</td>");
+                                teamCounter++;
+                            }
+                        },
                         error: function () {
                             alert("There was an error retrieving the teams from the database. Please check and try again");
                         }
@@ -97,7 +94,7 @@
                     time: 25,
                     autostart: true
                 });
-                
+
             },
             events: {
                 start: function () {
