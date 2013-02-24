@@ -19,13 +19,9 @@
                     var allTds = base.handler.events.getTableChildren();
                     var index = base.handler.events.decideWhichIndex(allTds.length);
                     $(allTds[index]).animate({
-                        backgroundColor: '#FF6200',
-                        color: '#f9f9f9'
+                        backgroundColor: '#FFDF00'
                     }, {
-                        duration: 5000,
-                        complete: function () {
-                            $(this).effect("highlight", { color: 'yellow' }, 5000);
-                        }
+                        duration: 5000
                     }).promise().done(function () {
                         $(base.handler.settings.winnerLabel).html($(allTds[index]).text());
                         $(base.handler.settings.winnerDialog).modal();
@@ -89,10 +85,10 @@
                     base.timer.events.animate();
                     count++;
                 });
-
+                
                 base.timer.settings.timer.set({
                     time: 25,
-                    autostart: true
+                    autostart: false
                 });
 
             },
@@ -107,7 +103,7 @@
                     var allTds = base.handler.events.getTableChildren();
                     var tableIndex = base.handler.events.decideWhichIndex(allTds.length);
                     $(allTds[tableIndex]).animate({
-                        backgroundColor: "yellow"
+                        backgroundColor: "#FFDF00"
                     }, { duration: "slow" });
 
                     $(allTds[tableIndex]).animate({

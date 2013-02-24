@@ -84,8 +84,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\customstyle.css" />
-    <Content Include="Content\images\big-yellow-friday-logo-medium.gif" />
-    <Content Include="Content\images\bigyellow.gif" />
     <Content Include="Content\images\BYFsmall.jpg" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
