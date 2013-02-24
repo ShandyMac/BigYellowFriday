@@ -40,12 +40,12 @@ namespace BigYellowFriday.Controllers
         private List<object> GetTeamsFromDatabase() {
             //access the database and pull out all teams
             var list = new List<object>();
-            var connectionsString = "Data Source=SHANDY-RC520\\MYSQLINSTANCE;Initial Catalog=BYFFootballTeams;Integrated Security=True";
+            var connectionsString = "Data Source=SHANDY-RC520\\MYSQLINSTANCE;Initial Catalog=BYFTeamsProd;Integrated Security=True";
             try{
                 var SQLConnection = new SqlConnection(connectionsString);
                 SQLConnection.Open();
                 var sqlCommand = SQLConnection.CreateCommand();
-                sqlCommand.CommandText = "SELECT Team FROM Teams";
+                sqlCommand.CommandText = "SELECT F1 FROM Teams";
                 var sqlReader = sqlCommand.ExecuteReader();
 
                 while(sqlReader.Read()){
