@@ -2,7 +2,7 @@
     
     <div id="pictureContainer" class="container">
         <div class="row">
-            <img src="../../Content/images/byfsmall.jpg" class="span2" />
+            <img src="../../Content/images/byfsmall.jpg" class="span2 img-circle" />
             <h2 class="span10 offset3">@ViewBag.Message</h2>
         </div>
     </div>
@@ -140,6 +140,13 @@
         </table>
     </div>
     <div id="eventTriggerContainer" class="container">
-        <button class="btn btn-primary" id="run">Run</button>
+        <button class="btn btn-primary btn-mini" id="run">Run</button>
     </div>
 </div>
+
+<!-- TODO:
+    - fix IIS hosting
+    -come up with developer friendly way to populate table data
+    ( Ideally, have all teams in a DB, go and get the teams and use a moustachejs template to populate front end
+    create a backend datastructure that is returned via AJAX and rendered at front end using moustachejs )
+ -->

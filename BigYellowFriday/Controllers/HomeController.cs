@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.SqlClient;
 
 namespace BigYellowFriday.Controllers
 {
@@ -23,6 +24,54 @@ namespace BigYellowFriday.Controllers
             var random = new Random();
             return new JsonResult() { Data = random.Next(0, upper) };
         }
+
+        public JsonResult GetTeams()
+        {
+            var teams = GetTeamsFromDatabase();
+            return new JsonResult
+            {
+                Data = new
+                {
+                    Teams = teams
+                }
+            };
+        }
+
+        private List<object> GetTeamsFromDatabase() {
+            //access the database and pull out all teams
+            var list = new List<object>();
+            var connectionsString = "Data Source=SHANDY-RC520\\MYSQLINSTANCE;Initial Catalog=BYFFootballTeams;Integrated Security=True";
+            try{
+                var SQLConnection = new SqlConnection(connectionsString);
+                SQLConnection.Open();
+                var sqlCommand = SQLConnection.CreateCommand();
+                sqlCommand.CommandText = "SELECT Team FROM Teams";
+                var sqlReader = sqlCommand.ExecuteReader();
+
+                while(sqlReader.Read()){
+                    
+                    var temp = sqlReader[0];
+                    list.Add(temp);
+                
+                }
+
+                sqlReader.Close();
+                SQLConnection.Close();
+
+            }
+            catch(Exception ex){
+                
+            }
+
+
+
+            return list;
+        }
+    }
+
+    public class ReturnedTeams {
+        public int ID { get; set; }
+        public string TeamName { get; set; }
     }
 }
 

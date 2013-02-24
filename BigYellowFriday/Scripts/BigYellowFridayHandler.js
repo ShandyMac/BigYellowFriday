@@ -7,7 +7,10 @@
                 table: '#table'
             },
             init: function () {
+                var teams = null;
+                teams = base.handler.events.getTeams();
                 $(base.handler.settings.submitBtn).click(base.handler.events.onClick);
+                //base.handler.events.populateTable();
                 base.timer.init();
             },
             events: {
@@ -54,6 +57,25 @@
                         }
                     });
                     return index;
+                },
+                getTeams: function () {
+                    var teams = [];
+                    $.ajax({
+                        type: 'POST',
+                        url: 'Home/GetTeams',
+                        async: false,
+                        success: function (data) {
+                            if (data != null)
+                                teams = data;
+
+                            //in here run populate the data using the json via a mustache template
+
+                        },
+                        error: function () {
+                            alert("There was an error retrieving the teams from the database. Please check and try again");
+                        }
+                    });
+                    return teams;
                 }
             }
         };
@@ -63,16 +85,26 @@
                 timer: $.timer
             },
             init: function () {
+                var debug = true;
+
                 var count = 0;
                 base.timer.settings.timer = $.timer(function () {
                     base.timer.events.animate();
                     count++;
                 });
 
-                base.timer.settings.timer.set({
-                    time: 25,
-                    autostart: true
-                });
+                if (debug = false) {
+                    base.timer.settings.timer.set({
+                        time: 25,
+                        autostart: true
+                    });
+                }
+                else {
+                    base.timer.settings.timer.set({
+                        time: 25,
+                        autostart: false
+                    });
+                }
             },
             events: {
                 start: function () {
