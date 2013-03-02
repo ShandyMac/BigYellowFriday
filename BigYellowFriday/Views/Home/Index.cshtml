@@ -1,9 +1,14 @@
-﻿<div id="mainContainer">
-    
-    <div id="pictureContainer" class="container">
-        <div class="row">
-            <img src="../../Content/images/byfsmall.jpg" class="span2 img-rounded" />
-            <h2 class="span10 offset3">@ViewBag.Message</h2>
+﻿<div id="watermark"></div>
+
+<div id="mainContainer">
+    <div id="pictureContainer" class="">
+        <div class="row-fluid offset2">
+            <div class="span2">
+                <img src="../../Content/images/byfsmall.jpg" class="img-rounded" />
+            </div>
+            <div class="span10">
+                <h2>@ViewBag.Message</h2>
+            </div>
         </div>
     </div>
     <div id="tableContainer" class="container">
@@ -18,11 +23,17 @@
                 <button type="button" class="close" data-dismiss="modal">x</button>
                 <h3>Winner!</h3>
             </div>
-            <div class="modal-body" style="height: 200px;">
-                <p>
-                    And the winner is...
-                </p>
-                <strong id="winner"></strong>
+            <div class="modal-body">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <p>
+                            And the winner is...
+                        </p>    
+                    </div>
+                    <div class="span12">
+                        <strong id="winner"></strong>    
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

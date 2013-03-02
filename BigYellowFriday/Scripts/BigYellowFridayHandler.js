@@ -4,6 +4,7 @@
         base.handler = {
             settings: {
                 submitBtn: '#run',
+                resetBtn: '#reset',
                 table: '#table',
                 winnerDialog: '#winner-dialog',
                 winnerLabel: '#winner'
@@ -11,6 +12,7 @@
             init: function () {
                 base.handler.events.getTeams();
                 $(base.handler.settings.submitBtn).click(base.handler.events.onClick);
+                $(base.handler.settings.resetBtn).click(base.handler.events.reset);
                 base.timer.init();
             },
             events: {
@@ -27,6 +29,9 @@
                         $(base.handler.settings.winnerDialog).modal();
                     });
                 },
+
+                
+
                 getTableChildren: function () {
                     return $(base.handler.settings.table).children('tbody').children('tr').children('td');
                 },
@@ -85,10 +90,10 @@
                     base.timer.events.animate();
                     count++;
                 });
-                
+
                 base.timer.settings.timer.set({
                     time: 25,
-                    autostart: false
+                    autostart: true
                 });
 
             },
